@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./style.css"
 
 export default function ReactIndex() {
   const [messages, setMessages] = useState<any>([]);
@@ -31,7 +32,7 @@ export default function ReactIndex() {
     setMessages((messages: any) => [...messages, newMessage]);
     setInput("");
 
-    const response = await fetch("/api/chat", {
+    const response = await fetch("/api/route.json", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
