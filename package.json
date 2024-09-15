@@ -11,12 +11,16 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.3",
+    "@astrojs/node": "^8.3.3",
     "@astrojs/react": "^3.6.2",
     "@astrojs/vercel": "^7.8.1",
     "@google/generative-ai": "^0.17.2",
+    "@types/node": "^22.5.5",
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
     "astro": "^4.15.4",
+    "axios": "^1.7.7",
+    "form-data": "^4.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "typescript": "^5.6.2"
