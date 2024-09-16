@@ -7,29 +7,21 @@ export const POST: APIRoute = async ({ request }) => {
   try {
     const body = await request.json();
     const userMessage = body.message;
+    const chatHistory = body.history;
 
     const genAI = new GoogleGenerativeAI(import.meta.env.NEW_GEMINI_API_KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
     const chat = model.startChat({
-      history: [
-        {
-          role: "user",
-          parts: [{ text: "Hello" }],
-        },
-        {
-          role: "model",
-          parts: [{ text: "Great to meet you. What would you like to know?" }],
-        },
-      ],
+      history: chatHistory,
     });
 
-    let result = await chat.sendMessage("I have 2 dogs in my house.");
-    console.log(result.response.text());
-    result = await chat.sendMessage("How many paws are in my house?");
-    console.log(result.response.text());
+    let result = await chat.sendMessage(userMessage);
+    let response = await result.response.text();
 
-    return new Response(JSON.stringify({ reply: "text" }), {
+    console.log(response);
+
+    return new Response(response, {
       status: 200,
       headers: {
         "Content-Type": "application/json",
